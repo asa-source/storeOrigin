@@ -13,6 +13,12 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->statefulApi();
+        // グローバルミドルウェアの登録
+        $middleware->append(\App\Http\Middleware\CorsMiddleware::class);
+        // ミドルウェアグループへの追加（例: 'web' グループ）
+        $middleware->appendToGroup('web', \App\Http\Middleware\CorsMiddleware::class);
+        $middleware->appendToGroup('api', \App\Http\Middleware\CorsMiddleware::class);
+
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

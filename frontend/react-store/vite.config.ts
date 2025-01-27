@@ -10,6 +10,13 @@ export default defineConfig({
   ],
   server: {
     port: 5173, // 開発サーバーのポート
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8000', // LaravelサーバのURL
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''), // 必要に応じてパスを書き換える
+      },
+    },
   },
   resolve: {
     alias: {
