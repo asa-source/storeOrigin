@@ -1,6 +1,5 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
+import './index.css';  // index.cssはmain.tsxで一度だけインポート
+import './App.css'; 
 import ReactDOM from 'react-dom/client'; 
 import App from './App.tsx'
 import React from 'react'

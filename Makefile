@@ -12,9 +12,14 @@ stop:
 	docker compose stop
 build:
 	docker compose build --no-cache
+startsystem:
+	@make phpartisan
+	@make dev
 # Container
 php:
 	docker compose exec php bash
+phpartisan:
+	docker compose exec php php artisan serve --host=0.0.0.0 --port=8000
 frontend:
 	docker compose exec frontend bash
 # autoload
@@ -27,8 +32,7 @@ fresh:
 	docker compose exec php php artisan migrate:fresh --seed
 dev:
 	cd frontend/react-store && npm run dev
-artisan-serve:
-	docker compose exec php php artisan serve
+
 # Create Laravel Project (first execution)
 composer:
 	docker compose exec php composer install

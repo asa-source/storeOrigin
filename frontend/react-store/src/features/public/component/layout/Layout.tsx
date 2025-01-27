@@ -6,9 +6,6 @@ const Layout = () => {
     
     return (
         <>
-            <h1>
-                This is Layout Compornent
-            </h1>
             <LayoutHeader />
             <Outlet />
         </>
