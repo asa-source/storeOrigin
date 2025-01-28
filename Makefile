@@ -18,10 +18,10 @@ startsystem:
 # Container
 php:
 	docker compose exec php bash
-phpartisan:
+serve:
 	docker compose exec php php artisan serve --host=0.0.0.0 --port=8000
 frontend:
-	docker compose exec frontend bash
+	docker compose exec frontend sh
 # autoload
 autoload:
 	docker compose exec php composer dump-autoload
@@ -31,7 +31,7 @@ migrate:
 fresh:
 	docker compose exec php php artisan migrate:fresh --seed
 dev:
-	cd frontend/react-store && npm run dev
+	docker compose exec frontend npm run dev
 
 # Create Laravel Project (first execution)
 composer:

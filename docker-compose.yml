@@ -1,4 +1,7 @@
 version: '3'
+networks:
+  app-network:
+    driver: bridge
 services:
   # nginx:
   #   build: ./infra-docker-store/webserver
@@ -20,8 +23,10 @@ services:
       - ./backend/src:/var/www
     ports:
     - 8000:8000
+    command: php artisan serve --host=0.0.0.0 --port=8000
     networks:
       - app-network
+
       
   frontend:
     build:
@@ -37,6 +42,7 @@ services:
       - 3000:3000
     environment:
       - CHOKIDAR_USEPOLLING=true  # ファイル変更を検知する
+      - REACT_APP_API_URL=http://php:8000  # backendのコンテナ名を指定
     networks:
       - app-network
 
@@ -54,31 +60,6 @@ services:
     volumes:
       - db_data:/var/lib/mysql  # データ永続化のためのボリュームマウント
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
-    container_name: "phpmyadminContainer"
-    environment:
-      - PMA_ARBITRARY=1
-      - PMA_HOST=db
-      - PMA_USER=user
-      - PMA_PASSWORD=password
-    links:
-      - db
-    ports:
-      - 8088:80
-    volumes:
-      - ./phpmyadmin/sessions:/sessions
-
-  # mail:
-  #   image: mailhog/mailhog
-  #   container_name: "mailhog"
-  #   ports:
-  #     - 8025:8025
-
 volumes:
   db_data:
     driver: local
-
-networks:
-  app-network:
-    driver: bridge
