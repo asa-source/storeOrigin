@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-#root {
-  max-width: 1280px;
+/* #root {
+  width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
   text-align: center;
 }
 
@@ -20,7 +20,7 @@
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
-}
+} */
 
 @keyframes logo-spin {
   from {

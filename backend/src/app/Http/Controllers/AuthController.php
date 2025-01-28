@@ -30,7 +30,7 @@ class AuthController extends Controller
         $request->user()->tokens->each(function ($token) {
             $token->delete();
         });
-        return response()->json(['message' => 'Logged out successfully']);
+        return response()->json(['message' => 'Logged out successfully'], 401);
     }
     public function user(Request $request)
     {

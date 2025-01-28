@@ -20,7 +20,7 @@ export const login = async (email: string, password: string) => {
 // ログアウトします。
 export const logout = async () => {
     try {
-        await api.post('/logout');
+        await api.post('/api/logout');
         localStorage.removeItem('token');
     } catch (error) {
     }
