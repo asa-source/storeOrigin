@@ -5,7 +5,7 @@ import api from "../../lib/axios";
 // ログインします。
 export const login = async (email: string, password: string) => {
     try {
-        const response = await apiPublic.post('/login', { email, password });
+        const response = await apiPublic.post('/api/login', { email, password });
         const { token } = response.data;
         if (token) {
             localStorage.setItem('token', token);

@@ -2,14 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../../../hooks/service/authService';
-import { 
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle, } from '../../../components/components/ui/card';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../../components/components/ui/select';
+import { Card, CardContent, CardFooter} from '../../../components/components/ui/card';
 import { Label } from '../../../components/components/ui/label';
 import { Input } from '../../../components/components/ui/input';
 import { Button } from '../../../components/components/ui/button';

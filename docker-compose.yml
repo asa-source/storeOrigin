@@ -1,10 +1,4 @@
-version: '3'
-networks:
-  app-network:
-    driver: bridge
 services:
-
-
   backend:
     build: ./infra-docker-store/backend
     container_name: "laravelContainer"
@@ -30,7 +24,6 @@ services:
       - 3000:3000
     environment:
       - CHOKIDAR_USEPOLLING=true  # ファイル変更を検知する
-      - REACT_APP_API_URL=http://backend:8000  # backendのコンテナ名を指定
     networks:
       - app-network
 
@@ -51,6 +44,11 @@ services:
 volumes:
   db_data:
     driver: local
+
+networks:
+  app-network:
+    driver: bridge
+
   # nginx:
   #   build: ./infra-docker-store/webserver
   #   container_name: "nginxContainer"

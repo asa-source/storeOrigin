@@ -14,7 +14,7 @@ const UserPage = () => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await api.get('/user');  // APIリクエスト
+                const response = await api.get('/api/user');  // APIリクエスト
                 setUser(response.data);  // ユーザー情報を設定
             } catch (error) {
                 console.error(' ExceptiopnError[GET]:/user')
