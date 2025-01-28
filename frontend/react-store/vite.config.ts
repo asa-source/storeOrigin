@@ -7,7 +7,8 @@ export default defineConfig({
     react(),
   ],
   server: {
-    port: 5173, // 開発サーバーのポート
+    port: 3000, // 開発サーバーのポート
+    host: '0.0.0.0', // 外部からアクセス可能にする
     proxy: {
       '/api': {
         target: 'http://localhost:8000', // LaravelサーバのURL

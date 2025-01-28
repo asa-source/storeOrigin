@@ -1,8 +1,19 @@
 FROM node:20.10-alpine
-WORKDIR /var/www
 
-# 必要な依存関係をインストール
-RUN apk add --no-cache bash
+# 作業ディレクトリを設定
+WORKDIR /app
 
-# コンテナ内で npm を使えるように
-CMD [ "sh" ]
+# 依存関係をインストールするため、package.json と package-lock.json をコピー
+COPY package*.json ./
+
+# 依存関係のインストール
+RUN npm install
+
+# プロジェクトファイルをコンテナにコピー
+COPY . .
+
+# コンテナ起動時に開発サーバーを実行
+CMD ["sh"]
+
+# ポート3000を公開（Reactのデフォルトポート）
+EXPOSE 3000

@@ -24,33 +24,35 @@ services:
       - app-network
       
   frontend:
-    build: ./infra-docker-store/frontend
+    build:
+      context: ./frontend/react-store   # Reactプロジェクトのルート
+      dockerfile: ../../infra-docker-store/frontend/Dockerfile
     container_name: "reactContainer"
     tty: true
+    stdin_open: true
     volumes:
-      - ./frontend:/var/www
+      - ./frontend/react-store:/app  # ローカルのReactコードをコンテナ内にマウント
+      - /app/node_modules # ホストとコンテナ間でnode_modulesを分離
     ports:
       - 3000:3000
-    depends_on:
-      - php
+    environment:
+      - CHOKIDAR_USEPOLLING=true  # ファイル変更を検知する
     networks:
       - app-network
 
   db: 
     build: ./infra-docker-store/db
     container_name: "mysqlContainer"
+    restart: always
     environment:
-        MYSQL_ROOT_PASSWORD: root
-        MYSQL_DATABASE: mysql_db
-        MYSQL_USER: user
-        MYSQL_PASSWORD: password
-        TZ: 'Asia/Tokyo'
+      MYSQL_DATABASE: store_db          # 初期データベース名
+      MYSQL_USER: user                    # アプリケーション用ユーザー
+      MYSQL_PASSWORD: user_password       # アプリケーション用ユーザーのパスワード
+      MYSQL_ROOT_PASSWORD: root_password  # ルートユーザーのパスワード
     ports:
-        - 3306:3306
+      - "3306:3306"  # ホストとコンテナのポートマッピング
     volumes:
-      - db_data:/var/lib/mysql
-      - db_my.cnf:/etc/mysql/conf.d/my.cnf
-      - db_sql:/docker-entrypoint-initdb.d
+      - db_data:/var/lib/mysql  # データ永続化のためのボリュームマウント
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
@@ -75,8 +77,7 @@ services:
 
 volumes:
   db_data:
-  db_my.cnf:
-  db_sql:
+    driver: local
 
 networks:
   app-network:
