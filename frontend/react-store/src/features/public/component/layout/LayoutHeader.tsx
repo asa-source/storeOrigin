@@ -10,7 +10,7 @@ const LayoutHeader = () => {
                     <div className="space-x-4">
                         <a href="/" className="text-lg hover:text-gray-300">Home</a>
                         <a href="/user" className="text-lg hover:text-gray-300">User</a>
-                        <a href="/" className="text-lg hover:text-gray-300">Services</a>
+                        <a href="/employee" className="text-lg hover:text-gray-300">Employee</a>
                         <a href="/" className="text-lg hover:text-gray-300">Contact</a>
                     </div>
                 </div>

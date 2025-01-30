@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
+import path from 'path';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -21,7 +22,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': '/src', // インポート時に「@」を使用できるようにする例
+      '@': path.resolve(__dirname, 'src') ,
+      '@react-table': path.resolve(__dirname, 'node_modules/@tanstack/react-table'),
     },
   },
 })

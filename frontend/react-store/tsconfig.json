@@ -1,14 +1,16 @@
 {
   "files": [],
+  "compilerOptions": {
+    "baseUrl": "./",
+    "types": ["node"],
+    "typeRoots": ["node_modules/@types"],
+    "paths": {
+      "@/*": ["./src/*"],
+      "@react-table": ["node_modules/@tanstack/react-table"]
+    }
+  },
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ],
-  "compilerOptions": {
-    "types": ["node"],
-    "baseUrl": "./",
-    "paths": {
-      "@/components/*": ["./src/components/*"]
-    }
-  }
+  ]
 }
