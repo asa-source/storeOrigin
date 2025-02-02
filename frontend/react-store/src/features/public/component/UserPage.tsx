@@ -39,7 +39,7 @@ const UserPage = () => {
     if (!user) return <div className='flex justify-center items-center'><ThreeDots height="40" width="40" color="#555555" ariaLabel="loading" /></div>
     return (
         <>
-            <div className="flex justify-center items-center min-h-screen">
+            <div className="flex justify-center items-center">
                 <Card className="w-[350px]">
                     <CardContent>
                     </CardContent>
