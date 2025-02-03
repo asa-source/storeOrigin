@@ -5,7 +5,7 @@
     "types": ["node"],
     "typeRoots": ["node_modules/@types"],
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": ["./*"],
       "@react-table": ["node_modules/@tanstack/react-table"]
     }
   },

@@ -14,4 +14,5 @@ Route::middleware([CorsMiddleware::class])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/user', [AuthController::class, 'user'])->middleware('auth:sanctum');
     Route::get('/employees', [EmployeeController::class, 'index']);
+    Route::put('/employees/{id}', [EmployeeController::class, 'update']);
 });

@@ -23,7 +23,6 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src') ,
-      '@react-table': path.resolve(__dirname, 'node_modules/@tanstack/react-table'),
     },
   },
 })
